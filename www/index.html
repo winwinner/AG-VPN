@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PokrasCloud – Личное облако</title>
+<style>
+  :root {
+    --blue: #0082c9;
+    --blue-dark: #006aa3;
+    --bg: #f0f4f8;
+    --card: #fff;
+    --text: #222;
+    --muted: #6b7280;
+    --border: #d1d5db;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Header */
+  header {
+    background: var(--blue);
+    padding: 14px 32px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.15);
+  }
+  header svg { width: 32px; height: 32px; fill: #fff; }
+  header span {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -.3px;
+  }
+
+  /* Main */
+  main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 16px;
+  }
+  .card {
+    background: var(--card);
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,.10);
+    width: 100%;
+    max-width: 380px;
+    padding: 36px 32px 32px;
+  }
+  .card h2 {
+    font-size: 1.15rem;
+    color: var(--text);
+    margin-bottom: 24px;
+    text-align: center;
+    font-weight: 600;
+  }
+  .field { margin-bottom: 16px; }
+  .field label {
+    display: block;
+    font-size: .82rem;
+    color: var(--muted);
+    margin-bottom: 5px;
+    font-weight: 500;
+  }
+  .field input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    font-size: .95rem;
+    color: var(--text);
+    outline: none;
+    transition: border .15s;
+    background: #f9fafb;
+  }
+  .field input:focus {
+    border-color: var(--blue);
+    background: #fff;
+  }
+  .btn {
+    width: 100%;
+    padding: 11px;
+    background: var(--blue);
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    font-size: .97rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background .15s;
+  }
+  .btn:hover { background: var(--blue-dark); }
+  .forgot {
+    text-align: center;
+    margin-top: 14px;
+    font-size: .82rem;
+    color: var(--muted);
+  }
+  .forgot a { color: var(--blue); text-decoration: none; }
+  .forgot a:hover { text-decoration: underline; }
+
+  /* Features */
+  .features {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 32px 16px 48px;
+    flex-wrap: wrap;
+  }
+  .feature {
+    text-align: center;
+    max-width: 160px;
+  }
+  .feature-icon {
+    width: 48px; height: 48px;
+    background: var(--blue);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 10px;
+  }
+  .feature-icon svg { width: 24px; height: 24px; fill: #fff; }
+  .feature h3 { font-size: .88rem; color: var(--text); margin-bottom: 4px; font-weight: 600; }
+  .feature p { font-size: .78rem; color: var(--muted); line-height: 1.5; }
+
+  footer {
+    text-align: center;
+    padding: 16px;
+    font-size: .75rem;
+    color: #9ca3af;
+    border-top: 1px solid var(--border);
+    background: #fff;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <svg viewBox="0 0 24 24"><path d="M19.35 10.04A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.04A5.994 5.994 0 0 0 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>
+  <span>PokrasCloud</span>
+</header>
+
+<main>
+  <div class="card">
+    <h2>Вход в хранилище</h2>
+    <form action="#" method="post" autocomplete="on">
+      <div class="field">
+        <label for="user">Имя пользователя</label>
+        <input type="text" id="user" name="user" placeholder="admin" autocomplete="username">
+      </div>
+      <div class="field">
+        <label for="pass">Пароль</label>
+        <input type="password" id="pass" name="pass" placeholder="••••••••" autocomplete="current-password">
+      </div>
+      <button class="btn" type="submit">Войти</button>
+    </form>
+    <p class="forgot"><a href="#">Забыли пароль?</a></p>
+  </div>
+</main>
+
+<section class="features">
+  <div class="feature">
+    <div class="feature-icon">
+      <svg viewBox="0 0 24 24"><path d="M10 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>
+    </div>
+    <h3>Файлы</h3>
+    <p>Храните документы и архивы в одном месте</p>
+  </div>
+  <div class="feature">
+    <div class="feature-icon">
+      <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+    </div>
+    <h3>Фото и видео</h3>
+    <p>Автозагрузка с телефона, галерея</p>
+  </div>
+  <div class="feature">
+    <div class="feature-icon">
+      <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+    </div>
+    <h3>Приватность</h3>
+    <p>Ваши данные только на вашем сервере</p>
+  </div>
+</section>
+
+<footer>
+  &copy; 2024 PokrasCloud &nbsp;·&nbsp; Личное облачное хранилище &nbsp;·&nbsp; v1.2.4
+</footer>
+
+</body>
+</html>

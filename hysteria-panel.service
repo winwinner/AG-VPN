@@ -1,0 +1,12 @@
+[Unit]
+Description=Hysteria2 Web Panel
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /opt/hysteria-panel/panel.py
+Restart=always
+User=root
+EnvironmentFile=/etc/hysteria-panel/secrets.env
+
+[Install]
+WantedBy=multi-user.target
