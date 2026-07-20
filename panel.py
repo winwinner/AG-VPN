@@ -71,7 +71,7 @@ def write_users(users):
         new_auth = f"auth:\n  type: userpass\n  userpass:\n{lines}"
         text = re.sub(r"auth:.*?(?=\n\S|\Z)", new_auth, text, flags=re.DOTALL)
         open(CONFIG_PATH, "w").write(text)
-    subprocess.run(["systemctl", "restart", "hysteria.service"], check=False)
+    subprocess.run(["systemctl", "restart", "hysteria-server.service"], check=False)
 
 def validate_username(name: str) -> bool:
     """Только буквы, цифры, дефис, подчёркивание. Длина 1-32."""
