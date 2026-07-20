@@ -53,6 +53,19 @@ systemctl enable --now hysteria-panel
 nginx -t && systemctl reload nginx
 ```
 
+## TLS-сертификат (Let's Encrypt)
+
+Nginx в этом конфиге постоянно держит порт 80 (редирект на HTTPS), поэтому certbot нужно настроить с authenticator **`webroot`**, а не `standalone` — иначе продление будет падать с `Could not bind TCP port 80`, сертификат истечёт и Hysteria2 перестанет принимать клиентов (TLS/QUIC-хендшейк не пройдёт).
+
+```bash
+certbot certonly --webroot --webroot-path /var/www/pokrascloud \
+  -d your-domain.example.com --cert-name your-domain.example.com
+systemctl reload nginx
+systemctl restart hysteria-server.service
+```
+
+Проверка срока действия: `certbot certificates` или `openssl x509 -enddate -noout -in /etc/letsencrypt/live/your-domain.example.com/fullchain.pem`.
+
 ## Использование
 
 Панель доступна по адресу `http://<VPS-IP>:8080` или через SSH-туннель:
